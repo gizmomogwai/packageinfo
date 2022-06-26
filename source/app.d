@@ -21,9 +21,9 @@ import std.string : format;
     bool active;
 }
 
-int main(string[] args)
+int main()
 {
-    auto outDir = "out/generated/packageinfo";
+    const outDir = "out/generated/packageinfo";
     outDir.mkdirRecurse;
     auto outFile = outDir ~ "/package.d";
     auto output = ["dub", "describe"].execute;
@@ -45,7 +45,7 @@ int main(string[] args)
         result.put("    ];\n");
         result.put("}\n");
         if (outFile.exists) {
-            auto currentContent = outFile.readText;
+            const currentContent = outFile.readText;
             if (currentContent == result.data) {
                 stderr.writeln("%s is already up2date".format(outFile));
                 return 0;
