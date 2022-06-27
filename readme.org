@@ -1,0 +1,32 @@
+* Packageinfo for dlangs dub packages
+Sooner or later the question of licenses of dependencies comes
+up. This package helps keeping an overview. See [[https://forum.dlang.org/post/t9d7t1$1ljo$1@digitalmars.com][forum.dlang.org/Learn]]
+for discussion of this.
+
+** Usage
+Please add the following to your artifact (after =dub fetch packageinfo=).
+#+BEGIN_SRC dub.sdl
+  preGenerateCommands "$DUB run packageinfo"
+  sourcePaths "source" "out/generated/packageinfo"
+  importPaths "source" "out/generated/packageinfo"
+#+END_SRC
+This will create a module in out/generated/packageinfo/packageinfo.d
+that contains all dependencies with selected informatiosn (name,
+version and license).
+
+The information is provided as an enum, so it is possible to
+access it at compile time
+#+BEGIN_SRC d
+import packageinfo;
+static foreach (p; packageinfo.packages)
+{
+    pragma(msg, p);
+}
+#+END_SRC
+or runtime
+#+BEGIN_SRC d
+import std.stdio : writeln;
+import packageinfo;
+writeln(packageinfo.packages);
+#+END_SRC
+
