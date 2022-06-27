@@ -32,8 +32,7 @@ int main()
     {
         result.put("module packageinfo;\n");
         result.put("struct PackageInfo\n{\n    string name;\n    string semVer;\n    string license;\n}\n");
-        result.put("auto getPackages()\n{\n");
-        result.put("    return [\n");
+        result.put("enum PackageInfo[] packages = [\n");
         auto rootPackage = deserializeJson!(RootPackage)(output.output.find("{"));
         foreach (p; rootPackage.packages)
         {
@@ -43,7 +42,6 @@ int main()
             }
         }
         result.put("    ];\n");
-        result.put("}\n");
         if (outFile.exists) {
             const currentContent = outFile.readText;
             if (currentContent == result.data) {
