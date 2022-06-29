@@ -4,4 +4,20 @@ authors "Christian Koestlin"
 copyright "Copyright (c) 2022, Christian Koestlin"
 license "MIT"
 dependency "mir-ion" version="~>1.1.0-rc3"
-targetPath "out/exe"
+
+configuration "application" {
+  targetType "executable"
+  targetPath "out/main"
+}
+
+configuration "dogfood" {
+  preGenerateCommands "dub run packageinfo --config=dogfood"
+  sourcePaths "source" "out/generated/packageinfo"
+  importPaths "source" "out/generated/packageinfo"
+
+  versions "dogfood"
+  targetType "executable"
+  targetPath "out/dogfood"
+
+  dependency "asciitable" version="~>0.0.14"
+}

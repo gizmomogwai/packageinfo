@@ -3,7 +3,7 @@ Sooner or later the question of licenses of dependencies comes
 up. This package helps keeping an overview. See [[https://forum.dlang.org/post/t9d7t1$1ljo$1@digitalmars.com][forum.dlang.org/Learn]]
 for discussion of this.
 
-** Usage
+** Basic Usage
 Please add the following to your artifact (after =dub fetch packageinfo=).
 #+BEGIN_SRC dub.sdl
   preGenerateCommands "$DUB run packageinfo"
@@ -30,3 +30,7 @@ import packageinfo;
 writeln(packageinfo.packages);
 #+END_SRC
 
+** Program arguments
+To select one configuration of your dub project, pass
+=--config=CONFIGNAME= to packageinfo.
+See the dogfood configuration in packageinfo itself as an example.
