@@ -1,14 +1,14 @@
 {
 	"fileVersion": 1,
 	"versions": {
-		"asciitable": "0.0.14",
+		"asciitable": "0.0.16",
 		"color": "0.0.9",
-		"colored": "0.0.27",
-		"mir-algorithm": "3.14.1",
-		"mir-core": "1.1.109",
+		"colored": "0.0.28",
+		"mir-algorithm": "3.14.19",
+		"mir-core": "1.1.111",
 		"mir-cpuid": "1.2.7",
 		"mir-ion": "1.1.0-rc3",
 		"silly": "1.1.1",
-		"unit-threaded": "2.0.4"
+		"unit-threaded": "2.1.2"
 	}
 }
