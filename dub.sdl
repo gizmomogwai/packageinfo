@@ -3,13 +3,14 @@ description "Extract information of dub dependencies and provide them at runtime
 authors "Christian Koestlin"
 copyright "Copyright (c) 2022, Christian Koestlin"
 license "MIT"
-dependency "mir-ion" version="~>1.1.0-rc3"
+dependency "mir-ion" version="~>1.1.0-rc5"
 
 configuration "application" {
   targetType "executable"
   targetPath "out/main"
 }
 
+// packageinfo with support for --version commandline flag
 configuration "dogfood" {
   preGenerateCommands "dub run packageinfo --config=dogfood"
   sourcePaths "source" "out/generated/packageinfo"

@@ -7,7 +7,7 @@
 		"mir-algorithm": "3.14.19",
 		"mir-core": "1.1.111",
 		"mir-cpuid": "1.2.7",
-		"mir-ion": "1.1.0-rc3",
+		"mir-ion": "1.1.0-rc5",
 		"silly": "1.1.1",
 		"unit-threaded": "2.1.2"
 	}

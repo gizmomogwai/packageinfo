@@ -1,13 +1,14 @@
-import std.stdio : stderr, writeln;
-import std.process : execute;
 import mir.deser.json : deserializeJson, serdeKeys, serdeIgnoreUnexpectedKeys;
 import std.algorithm : find;
-import std.range : appender;
-import std.file : mkdirRecurse, write, append, exists, readText;
 import std.conv : to;
-import std.string : format;
+import std.file : mkdirRecurse, write, append, exists, readText;
 import std.getopt : getopt, defaultGetoptPrinter;
+import std.process : execute, executeShell, Config;
+import std.range : appender;
+import std.stdio : stderr, writeln;
+import std.string : format;
 import std.typecons : Tuple;
+import std.path : dirName;
 
 @serdeIgnoreUnexpectedKeys struct RootPackage
 {
@@ -74,7 +75,7 @@ void processDubOutput(T)(T output, string[] args)
         result.put(
                 "struct PackageInfo\n{\n    string name;\n    string semVer;\n    string license;\n}\n");
         result.put("enum PackageInfo[] packages = [\n");
-        auto rootPackage = deserializeJson!(RootPackage)(output.output.find("{"));
+        auto rootPackage = deserializeJson!(RootPackage)(output.output);
         foreach (p; rootPackage.packages)
         {
             if (p.active)
@@ -129,13 +130,13 @@ int main(string[] args)
     }
 
     auto command = appender!(string[]);
-    command.put("dub");
+    command.put(executeShell("which $DC").output.dirName ~ "/dub");
     command.put("describe");
     if (config != null)
     {
         command.put("--config=%s".format(config));
     }
-    auto output = command.data.execute;
+    auto output = command.data.execute(null, Config.stderrPassThrough);
     processDubOutput(output, args);
     return output.status;
 }
