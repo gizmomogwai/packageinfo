@@ -3,12 +3,12 @@
 	"versions": {
 		"asciitable": "0.0.16",
 		"color": "0.0.9",
-		"colored": "0.0.28",
-		"mir-algorithm": "3.14.19",
-		"mir-core": "1.1.111",
-		"mir-cpuid": "1.2.7",
-		"mir-ion": "1.1.0-rc5",
+		"colored": "0.0.31+commit.1.g6316447",
+		"mir-algorithm": "3.21.0",
+		"mir-core": "1.7.0",
+		"mir-cpuid": "1.2.11",
+		"mir-ion": "2.2.1",
 		"silly": "1.1.1",
-		"unit-threaded": "2.1.2"
+		"unit-threaded": "2.1.7"
 	}
 }
